@@ -22,8 +22,6 @@ export const addPost = async (req, res) => {
                         folder: "posts",
                     });
 
-                    console.log(response.url);
-
                     const url = imagekit.url({
                         path: response.filePath,
                         transformation: [
@@ -32,13 +30,10 @@ export const addPost = async (req, res) => {
                             { width: '1280' }
                         ]
                     });
-                    console.log(url);
                     return url;
                 })
             );
         }
-
-        console.log(image_urls);
 
         await Post.create({
             user: userId,
